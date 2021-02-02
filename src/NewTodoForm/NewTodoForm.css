@@ -1,0 +1,46 @@
+.Form{
+    height:200px;
+    width: 350px;
+    background-color: rgba(240, 87, 73, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 5px 4px 10px 1px rgba(3, 3, 3, 0.897);
+    transition: width 1s ease-in-out, height 0.5s ease-in-out;
+}
+
+.Form:hover{
+    height: 250px;
+    width: 450px;
+}
+
+.Form input{
+    width: 90%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid  #2D2926FF;;
+    outline: none;
+    color: #2D2926FF;
+    font-size: 18px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.Form input::placeholder{
+    color: #2D2926FF;
+    font-size: 12px;
+}
+
+.Form button{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}

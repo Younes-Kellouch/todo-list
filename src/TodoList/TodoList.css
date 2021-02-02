@@ -1,0 +1,28 @@
+.TodoList{
+    width:600px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgba(240, 87, 73, 0.8);
+    box-shadow: 5px 4px 10px 1px rgba(3, 3, 3, 0.897);
+    transition: width 1s ease-in-out;
+}
+
+.TodoList:hover{
+    width: 700px;
+}
+
+.TodoList h1{
+    margin: 50px auto;
+    color: #2D2926FF;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.Todos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}

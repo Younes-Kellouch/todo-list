@@ -1,0 +1,12 @@
+.TodoApp{
+    width: 90%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Todos{
+    display: flex;
+    flex-direction: column;
+}
