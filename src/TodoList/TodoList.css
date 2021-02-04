@@ -1,23 +1,23 @@
 .TodoList{
-    width:600px;
+    width:700px;
     min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color:rgba(240, 87, 73, 0.8);
     box-shadow: 5px 4px 10px 1px rgba(3, 3, 3, 0.897);
-    transition: width 1s ease-in-out;
+    transition: width 0.5s ease-in-out;
 }
 
 .TodoList:hover{
-    width: 700px;
+    width: 750px;
 }
 
 .TodoList h1{
     margin: 50px auto;
     color: #2D2926FF;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 40px;
 }
 
 .Todos{
@@ -26,3 +26,10 @@
     align-items: center;
     width: 80%;
 }
+
+.Checked{
+    text-decoration: line-through; 
+    text-decoration-color:rgba(240, 87, 73, 0.8); 
+    text-decoration-style: solid;
+}
+
