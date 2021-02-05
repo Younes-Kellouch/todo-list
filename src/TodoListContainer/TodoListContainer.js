@@ -21,18 +21,20 @@ class TodoListContainer extends Component {
     }
 
     updateTodo=(updatedTodo,id)=>{
-        let updatedTodos=this.state.todos.map(todo=>{
+        let updatedTodos=this.state.todos.map( todo =>{
             if(todo.id===id){
+                console.log("from the Function : "+id);
                 return {...todo, task:updatedTodo}
             }
             else{
                 return todo;
             }
         })
+        console.log("updatestTodos : "+updatedTodos)
         this.setState({
             todos:updatedTodos
         })
-        
+        console.log("test");
     }
 
     updateHandler=(id)=>{

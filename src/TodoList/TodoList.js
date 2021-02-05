@@ -22,7 +22,6 @@ class TodoList extends Component {
         )
             
         )
-          console.log(todos); 
         return (
             <div className="TodoList">
                 <h1>Your Dily Tasks</h1>

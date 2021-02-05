@@ -16,6 +16,7 @@ class UpdateTodoForm extends Component{
 
     submitHandler=(evt)=>{
         evt.preventDefault();
+        console.log(this.props.index);
         this.props.update(this.state.task,this.props.index);
         this.props.clicked(); // makes the form disappair when we submit
     }
