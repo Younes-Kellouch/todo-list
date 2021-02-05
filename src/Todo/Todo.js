@@ -1,18 +1,21 @@
 import React from 'react'
+import UpdateTodoForm from "../UpdateTodoForm/UpdateTodoForm"
 import "./Todo.css"
 
 const todo=(props)=>{
     return (
         <div className="Todo">
-            {props.modified ? 
-                <form className="formModification">
-                    <input type="text" name="todoText"/>
-                    <button>SAVE</button>
-                </form>:  
-                <div className="Text">
-                    {props.children}
-                </div>    
-        }   
+            {
+            props.modified ? 
+                <UpdateTodoForm 
+                    task={props.task} 
+                    update={props.updateTodo} 
+                    index={props.index}
+                    clicked={props.update}
+                />
+                :
+                <div className="Task">{props.children}</div> 
+            }   
           
             <div className="Buttons">
                 <div className="Modifier pointer" onClick={props.update}>

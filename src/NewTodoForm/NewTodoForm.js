@@ -1,22 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
 import "./NewTodoForm.css"
 
-const newTodoForm =(props)=>{
+class NewTodoForm extends Component {
 
-    const submitHandler=(event)=>{
-        event.prevenDefault();
-        props.submit(event);
+    state={
+        task:""
     }
-   
-    return(
-        <form  className="Form" onSubmit={submitHandler}>
-            <input type="text" name="todo" placeholder="New Task" autoComplete="off"/>
-            <button>
-                envoyer
-            </button>
-        </form>
-    )
+
+    changeHandler=(evt)=>{
+        this.setState({
+            [evt.target.name]:evt.target.value
+        })
+    }
+
+    submitHandler=(evt)=>{
+        evt.preventDefault();
+        this.props.createTodo(this.state); //Passing our Task to a function of the parent component
+        this.setState(
+            {
+                task:""             //initialising out State to an empty to string for the other Submit
+            }
+        )
+    }
+
+    render(){
+        return(
+            <form  className="Form" onSubmit={this.submitHandler}>
+                <input type="text" placeholder="New Task" name="task" value={this.state.task} autoComplete="off" onChange={this.changeHandler}/>
+                <button>
+                    envoyer
+                </button>
+            </form>
+        )
+    }
+    
 
 }
 
-export default newTodoForm
+export default NewTodoForm

@@ -3,28 +3,41 @@ import TodoList from "../TodoList/TodoList"
 import NewTodoForm from "../NewTodoForm/NewTodoForm"
 import "./TodoListContainer.css"
 
+
+const { v4: uuidv4 } = require('uuid');
 class TodoListContainer extends Component {
 
     state={
-        todos:[
-                {text:"todo 1 after this",id:1,modify:false,checked:false},
-                {text:"test 2",id:2,modify:false,checked:false},
-                {text:"test 3",id:3,modify:false,checked:false},
-                {text:"test 4",id:4,modify:false,checked:false}
-        ]
+        todos:[]
     }
 
-    addTodo=(evt)=>{
+    addTodo=(todo)=>{
+        let newTodo={...todo,id:uuidv4(),modify:false,checked:false}
         this.setState( prevState =>(
             {
-                todos:[...prevState.todos,evt.target.value]
+                todos:[...prevState.todos,newTodo] //Array that takes in all the exesting todos in the previous state and adding a new Todo
             }
         ))
     }
 
+    updateTodo=(updatedTodo,id)=>{
+        let updatedTodos=this.state.todos.map(todo=>{
+            if(todo.id===id){
+                return {...todo, task:updatedTodo}
+            }
+            else{
+                return todo;
+            }
+        })
+        this.setState({
+            todos:updatedTodos
+        })
+        
+    }
+
     updateHandler=(id)=>{
         let todos=[...this.state.todos];
-        let todo=todos.find(todo=>todo.id===id);
+        let todo=todos.find(todo => todo.id===id);
         const index=todos.findIndex(myTodo=>myTodo===todo);
         todo.modify=!todo.modify;
         todos[index]=todo;
@@ -34,12 +47,8 @@ class TodoListContainer extends Component {
     }
 
     removeHandler=(id)=>{
-        let todos=[...this.state.todos];
-        let todo=todos.find(todo=>todo.id===id);
-        const index=todos.findIndex(myTodo=>myTodo===todo);
-        todos.splice(index,1);
         this.setState({
-            todos:todos
+            todos:this.state.todos.filter(todo=>todo.id !==id)
         })
     }
 
@@ -59,12 +68,14 @@ class TodoListContainer extends Component {
             <div className="TodoApp">
                     <TodoList
                         todos={this.state.todos}
+                        changed={this.changeHandler}
                         updated={this.updateHandler}
                         removed={this.removeHandler}
                         finished={this.finishHandler}
+                        updatedTodo={this.updateTodo}
                     />
                     <NewTodoForm 
-                        submit={this.addTodo}
+                        createTodo={this.addTodo}
                     />
             </div>
         )
