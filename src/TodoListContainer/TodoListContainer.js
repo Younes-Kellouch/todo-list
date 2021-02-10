@@ -20,7 +20,7 @@ class TodoListContainer extends Component {
         ))
     }
 
-    updateTodo=(updatedTodo,id)=>{
+    updateTodo=(updatedTodo , id)=>{
         let updatedTodos=this.state.todos.map( todo =>{
             if(todo.id===id){
                 console.log("from the Function : "+id);
@@ -30,19 +30,21 @@ class TodoListContainer extends Component {
                 return todo;
             }
         })
-        console.log("updatestTodos : "+updatedTodos)
         this.setState({
             todos:updatedTodos
-        })
-        console.log("test");
+        });
     }
 
+
     updateHandler=(id)=>{
-        let todos=[...this.state.todos];
-        let todo=todos.find(todo => todo.id===id);
-        const index=todos.findIndex(myTodo=>myTodo===todo);
-        todo.modify=!todo.modify;
-        todos[index]=todo;
+        let todos=this.state.todos.map(todo=>{
+            if(todo.id===id)
+                return {...todo,modify:!todo.modify};
+            
+            else
+                return todo;
+        })
+
         this.setState({
             todos:todos
         })
@@ -55,14 +57,17 @@ class TodoListContainer extends Component {
     }
 
     finishHandler=(id)=>{
-        let todos=[...this.state.todos];
-        let todo=todos.find(todo=>todo.id===id);
-        const index = todos.findIndex(myTodo => myTodo===todo);
-        todo.checked =!todo.checked;
-        todos[index]=todo;
-        this.setState({
-            todos:todos
-        })
+       let todos=this.state.todos.map(todo=>{
+           if(todo.id===id)
+               return {...todo,checked:!todo.checked};
+           
+           else
+                return todo;
+       })
+
+       this.setState({
+           todos:todos
+       })
     }
 
     render() {

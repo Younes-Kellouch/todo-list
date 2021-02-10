@@ -15,6 +15,7 @@ class NewTodoForm extends Component {
 
     submitHandler=(evt)=>{
         evt.preventDefault();
+        //let newTodo={...this.state}
         this.props.createTodo(this.state); //Passing our Task to a function of the parent component
         this.setState(
             {
